@@ -1,0 +1,126 @@
+
+//////////////
+
+echo "Press 1 for addtion(+)\n"
+echo "Press 2 for subtraction(-)\n"
+echo "Press 3 for multiplication(*)\n"
+echo "Press 4 for division(/)\n"
+read a
+
+echo "Enter a number\n"
+read n1
+echo "Enter another number\n"
+read n2
+ 
+if [ $a -eq 1 ];
+then
+echo "The result of addition "$n=" "$((n1 + n2));
+#n=`expr $n1 + $n2`
+ 
+elif [ $a -eq 2 ];
+then
+echo "The result of subtraction "$n=" "$((n1 - n2))
+#n=`expr $n1 - $n2`
+  
+elif [ $a -eq 3 ];
+then
+echo "The result of multiplication "$n=" "$((n1 * n2))
+#n=`expr $n1 /* $n2`
+ 
+elif [ $a -eq 4 ];
+then 
+echo "The result of division "$n=" "$((n1 / n2))
+#n=`expr $n1 / $n2`
+ 
+fi
+
+////////////
+
+#!/bin/bash
+echo "Enter a number which table you want to see :"
+read n
+echo "Enter a number how long you want to see the table :"
+read a
+for ((i=1;i<=a;i++))
+do
+echo $n "x" $i "=" `expr $n \* $i`
+#echo $n "x" $i "=" $((n * i))
+
+done
+////////////
+
+#!/usr/bin/env bash
+
+echo "How many number you want to input : "
+read n
+
+echo "Enter" $n "numbers"
+for ((i=0; i < ${n[@]}; i++));
+do
+read a[$i]
+done
+
+echo "Values are :"
+for ((i=0; i < ${n[@]}; i++));
+do
+echo ${a[i]}
+done
+
+
+//////////////
+
+#!/usr/bin/env bash
+sentenceMake()
+{
+local first="$1"
+local second="$2"
+echo "My sentence is :$first" "$second"
+}
+sentenceMake "I Love my country " "named Bangladesh"
+echo "Enter 1st part of a sentence"
+read s1
+echo "Enter 2nd part of a sentence"
+read s2
+sentenceMake $s1 $s2
+
+
+//////
+#!/usr/bin/env bash
+factorial()
+{
+if (( $1 <= 1 )); then
+echo 1
+else
+last=$(factorial $(( $1 - 1 )))
+echo $(( $1 * last ))
+ 
+fi
+}
+while :
+do
+echo "Enter a number:"
+read x
+factorial $x
+done
+
+///////
+
+#!/usr/bin/env bash
+declare -A aArray
+echo Enter array size
+read sz
+for ((i=0; i < $sz; i++));
+do
+echo 'Enter value for key' $i 'of array'
+read val
+aArray[$i]=$val
+done
+echo ${aArray[@]}  
+for key in "${!aArray[@]}"; 
+do 
+printf "key: \"%s\"\nvalue: \"%s\"\n\n" "$key" "${aArray[$key]}"
+done
+
+
+
+
